@@ -1,1 +1,10 @@
-For adding RNE, follow this: https://reactnativeelements.com/docs/installation#using-expo
+Expo-wireframes:
+
+Our own CustomThemeProvider with:
+- Text
+- Button
+
+
+Additional:
+- CustomContextBuilder
+- Fonts
