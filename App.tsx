@@ -2,8 +2,11 @@ import { useFonts } from "expo-font";
 import { StyleSheet, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Button from "./src/button/Button";
+import List from "./src/list/List";
+import { LIST_MOCK_DATA, MockListItem } from "./src/list/list.mock";
 import Text from "./src/Text/Text";
 import ThemeProvider from "./src/ThemeBuilder/ThemeBuilder";
+import BaseTileItem from "./src/tile/BaseTileItem";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,10 +30,12 @@ export default function App() {
     <SafeAreaProvider>
       <ThemeProvider>
         <View style={styles.container}>
-          <Text body="l" type="regular">
-            Open up App.tsx to start working on your app!
-          </Text>
-          <Button onPress={() => {}} buttonLabel="text" buttonSize="m" />
+          <List<MockListItem>
+            data={LIST_MOCK_DATA}
+            renderItem={({ item }) => (
+              <BaseTileItem text={item.value} hasSeparator />
+            )}
+          />
         </View>
       </ThemeProvider>
     </SafeAreaProvider>
@@ -41,7 +46,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
