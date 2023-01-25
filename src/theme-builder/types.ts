@@ -22,6 +22,8 @@ export type ColorType =
   | "gray"
   | "grayDark"
   | "grayStroke"
+  | "grayLight"
+  | "greenMain"
   | "red";
 
 export type ThemeColors = Record<ColorType, string>;

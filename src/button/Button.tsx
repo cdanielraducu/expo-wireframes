@@ -8,8 +8,8 @@ import {
   ButtonStyles,
   ButtonType,
 } from "./types";
-import Text, { TextProps } from "../Text/Text";
-import { makeStyles, useTheme } from "../ThemeBuilder/ThemeBuilder";
+import Text, { TextProps } from "../text/Text";
+import { makeStyles, useTheme } from "../theme-builder/ThemeBuilder";
 
 interface ButtonProps {
   onPress: () => void;

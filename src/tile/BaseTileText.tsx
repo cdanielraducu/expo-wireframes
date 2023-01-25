@@ -1,4 +1,4 @@
-import Text, { TextProps } from "../Text/Text";
+import Text, { TextProps } from "../text/Text";
 
 interface BaseTileItemTextProps extends TextProps {
   text: string;

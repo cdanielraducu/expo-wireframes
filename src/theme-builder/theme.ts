@@ -21,6 +21,8 @@ export const theme: Theme = {
     gray: "#A1A1A6",
     grayDark: "#363636",
     grayStroke: "#E4E4E4",
+    grayLight: "#F9F9F9",
+    greenMain: "#285C41",
   },
   textTypes: textTypes,
   textHeaders: {

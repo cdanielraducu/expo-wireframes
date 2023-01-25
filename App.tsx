@@ -4,9 +4,11 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import Button from "./src/button/Button";
 import List from "./src/list/List";
 import { LIST_MOCK_DATA, MockListItem } from "./src/list/list.mock";
-import Text from "./src/Text/Text";
-import ThemeProvider from "./src/ThemeBuilder/ThemeBuilder";
-import BaseTileItem from "./src/tile/BaseTileItem";
+import TextInput from "./src/text-input/TextInput";
+import Text from "./src/text/Text";
+import ThemeProvider from "./src/theme-builder/ThemeBuilder";
+import * as React from "react";
+import SearchInput from "./src/text-input/SearchInput";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -30,11 +32,10 @@ export default function App() {
     <SafeAreaProvider>
       <ThemeProvider>
         <View style={styles.container}>
-          <List<MockListItem>
-            data={LIST_MOCK_DATA}
-            renderItem={({ item }) => (
-              <BaseTileItem text={item.value} hasSeparator />
-            )}
+          <SearchInput
+            placeholder="Search"
+            value="aaa"
+            onChangeText={() => {}}
           />
         </View>
       </ThemeProvider>
@@ -46,5 +47,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
   },
 });

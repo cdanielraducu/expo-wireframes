@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList, ListRenderItem } from "react-native";
-import { makeStyles } from "../ThemeBuilder/ThemeBuilder";
+import { makeStyles } from "../theme-builder/ThemeBuilder";
 import ListEmptyComponent from "./ListEmptyComponent";
 
 interface ListItemProps {

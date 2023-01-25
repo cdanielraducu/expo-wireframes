@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { View } from "react-native";
-import { TextProps } from "../Text/Text";
-import { makeStyles } from "../ThemeBuilder/ThemeBuilder";
+import { TextProps } from "../text/Text";
+import { makeStyles } from "../theme-builder/ThemeBuilder";
 import BaseTileItemContainer, {
   BaseTileItemContainerProps,
 } from "./BaseTileItemContainer";

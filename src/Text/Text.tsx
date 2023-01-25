@@ -4,8 +4,12 @@ import {
   Text as TextRN,
   TextStyle,
 } from "react-native";
+import Animated from "react-native-reanimated";
 import useBuilderContext from "../builder/useBuilderContext";
-import { TextBody, TextHeader, TextType, Theme } from "../ThemeBuilder/types";
+import { TextBody, TextHeader, TextType, Theme } from "../theme-builder/types";
+
+/** We give the AnimatedText a Text component from RN because it needs a class component */
+export const AnimatedText = Animated.createAnimatedComponent(TextRN);
 
 export interface TextProps {
   children?: React.ReactNode;

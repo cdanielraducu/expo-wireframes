@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Pressable, StyleProp, View, ViewStyle } from "react-native";
-import { makeStyles } from "../ThemeBuilder/ThemeBuilder";
+import { makeStyles } from "../theme-builder/ThemeBuilder";
 
 export interface BaseTileItemContainerProps {
   children: ReactNode;
