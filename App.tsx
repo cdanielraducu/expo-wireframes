@@ -1,14 +1,12 @@
+import * as React from "react";
 import { useFonts } from "expo-font";
 import { StyleSheet, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Button from "./src/button/Button";
-import List from "./src/list/List";
-import { LIST_MOCK_DATA, MockListItem } from "./src/list/list.mock";
-import TextInput from "./src/text-input/TextInput";
-import Text from "./src/text/Text";
 import ThemeProvider from "./src/theme-builder/ThemeBuilder";
-import * as React from "react";
-import SearchInput from "./src/text-input/SearchInput";
+import useModal from "./src/modal/useModal";
+import Modal from "./src/modal/Modal";
+import BaseTileItem from "./src/tile/BaseTileItem";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,6 +22,8 @@ export default function App() {
     "Satoshi-Regular": require("./src/assets/fonts/Satoshi-Regular.otf"),
   });
 
+  const { isOpen, onOpen, onClose } = useModal();
+
   if (!fontsLoaded) {
     return null;
   }
@@ -31,12 +31,11 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <ThemeProvider>
+        <Button buttonLabel="Open modal" onPress={onOpen} />
         <View style={styles.container}>
-          <SearchInput
-            placeholder="Search"
-            value="aaa"
-            onChangeText={() => {}}
-          />
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <BaseTileItem text="daa" />
+          </Modal>
         </View>
       </ThemeProvider>
     </SafeAreaProvider>
