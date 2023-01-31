@@ -2,12 +2,14 @@ import * as React from "react";
 import { View, Modal as ModalRN, Pressable } from "react-native";
 import Button from "../button/Button";
 import CloseIcon from "../icons/CloseIcon";
+import ScreenTitle from "../screen-title/ScreenTitle";
 import Text from "../text/Text";
 import { makeStyles } from "../theme-builder/ThemeBuilder";
 
 export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  modalTitle?: string;
   children?: React.ReactNode;
   closeButtonText?: string;
 }
@@ -15,6 +17,7 @@ export interface ModalProps {
 const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
+  modalTitle,
   children,
   closeButtonText,
 }) => {
@@ -34,9 +37,7 @@ const Modal: React.FC<ModalProps> = ({
           >
             <CloseIcon width={16} height={16} />
           </Pressable>
-          <Text header="h3" type="bold" style={styles.modalTitle}>
-            MODAL
-          </Text>
+          {modalTitle && <ScreenTitle>{modalTitle}</ScreenTitle>}
           {children}
           {closeButtonText && (
             <Button buttonLabel={closeButtonText} onPress={onClose} />
@@ -65,8 +66,7 @@ const useStyles = makeStyles(({ colors }, { isCloseIconPressed }) => ({
   content: {
     width: "100%",
     marginHorizontal: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 32,
+    padding: 20,
     backgroundColor: "white",
     borderRadius: 8,
     shadowColor: "#000",

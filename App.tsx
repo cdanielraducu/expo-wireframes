@@ -4,9 +4,13 @@ import { StyleSheet, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Button from "./src/button/Button";
 import ThemeProvider from "./src/theme-builder/ThemeBuilder";
-import useModal from "./src/modal/useModal";
-import Modal from "./src/modal/Modal";
-import BaseTileItem from "./src/tile/BaseTileItem";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "src/screens/HomeScreen";
+import { useAuth0, Auth0Provider } from "react-native-auth0";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -22,23 +26,27 @@ export default function App() {
     "Satoshi-Regular": require("./src/assets/fonts/Satoshi-Regular.otf"),
   });
 
-  const { isOpen, onOpen, onClose } = useModal();
-
   if (!fontsLoaded) {
     return null;
   }
 
   return (
-    <SafeAreaProvider>
-      <ThemeProvider>
-        <Button buttonLabel="Open modal" onPress={onOpen} />
-        <View style={styles.container}>
-          <Modal isOpen={isOpen} onClose={onClose}>
-            <BaseTileItem text="daa" />
-          </Modal>
-        </View>
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <SafeAreaProvider>
+        <ThemeProvider>
+          <Auth0Provider
+            domain={"test-auth0-mobile.eu.auth0.com"}
+            clientId={"YThKL6Vr6Eu0s3zayYBUfzgrrhUXuaGU"}
+          >
+            <BottomSheetModalProvider>
+              <Stack.Navigator>
+                <Stack.Screen name="Home" component={HomeScreen} />
+              </Stack.Navigator>
+            </BottomSheetModalProvider>
+          </Auth0Provider>
+        </ThemeProvider>
+      </SafeAreaProvider>
+    </NavigationContainer>
   );
 }
 

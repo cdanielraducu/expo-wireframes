@@ -7,8 +7,5 @@
         "projectId": "796f55b6-2164-483a-b099-69573f2b1279"
       }
     },
-    "ios": {
-      "bundleIdentifier": "com.cdanielraducu.Wireframes"
-    }
   }
 }
